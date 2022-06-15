@@ -77,6 +77,30 @@
         style="@style/RoundButton.Blue"
 
         android:layout_marginTop="10dp"/>
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:id="@+id/timePicker"
+        android:text="时间选择器"
+        app:layout_constraintTop_toBottomOf="@id/datePicker"
+        app:layout_constraintLeft_toLeftOf="@id/datePicker"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue"
+
+        android:layout_marginTop="10dp"/>
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:id="@+id/chat"
+        android:text="聊天页面"
+        app:layout_constraintTop_toBottomOf="@id/timePicker"
+        app:layout_constraintLeft_toLeftOf="@id/timePicker"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue"
+
+        android:layout_marginTop="10dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

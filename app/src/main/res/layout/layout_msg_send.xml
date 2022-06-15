@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:gravity="right" >
+
+        <TextView
+            android:id="@+id/send_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="40dp"
+            android:gravity="left"
+            android:background="@drawable/airbubbles3_send"
+            android:text="TextView"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/send_head_portrait"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/send" />
+
+    </LinearLayout>
+</LinearLayout>

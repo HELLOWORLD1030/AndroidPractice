@@ -17,9 +17,11 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
 
     private TextView tv_result; // 声明一个文本视图对象
     private String showText = ""; // 显示的文本内容
+    private boolean clearFlag=false;
+    private TextView texCount;
     private final StringBuilder builder=new StringBuilder();  //存储运算式子的字符串构造器
     private final int[] buttonSeq={
-            R.id.btn_cancel, // “取消”按钮
+            R.id.btn_del, // “取消”按钮
             R.id.btn_divide,// “除法”按钮
             R.id.btn_multiply , // “乘法”按钮
             R.id.btn_clear , // “清除”按钮
@@ -34,7 +36,7 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
             R.id.btn_one , // 数字1
             R.id.btn_two , // 数字2
             R.id.btn_three , // 数字3
-            R.id.btn_reciprocal , // 求倒数按钮
+//            R.id.btn_reciprocal , // 求倒数按钮
             R.id.btn_zero , // 数字0
             R.id.btn_dot , // “小数点”按钮
             R.id.btn_equal  // “等号”按钮
@@ -42,8 +44,9 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculate);
+        setContentView(R.layout.layout_calculate_new);
         tv_result = findViewById(R.id.tv_result);
+        texCount=findViewById(R.id.tex_count);
         for(int buttonId:buttonSeq)
             findViewById(buttonId).setOnClickListener(this);
     }
@@ -144,14 +147,14 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
     //检查整个表达式
     public boolean verifyExp(String exp){       //验证整个表达式是否合法
         String lastNum;
-        String[] sp=exp.split("[+\\-×÷]");      //将操作数分割出来
+        String[] sp=exp.split("[+\\-*/]");      //将操作数分割出来
         char lastChar=exp.charAt(exp.length()-1);       //获得最后一个字符
 
         lastNum=sp[sp.length-1];     //取得最后一位操作数
 
-        if(String.valueOf(lastChar).matches("[+\\-×÷]"))  //如果当前符号为四则运算符
+        if(String.valueOf(lastChar).matches("[+\\-*/]"))  //如果当前符号为四则运算符
         {
-            return exp.matches(".*(\\d[+-×÷])|.*(\\.[+-×÷])");      //验证最后的运算符是否符合只有一个原则
+            return exp.matches(".*(\\d[+\\-*/])|.*(\\.[+\\-*/])");      //验证最后的运算符是否符合只有一个原则
 
         }else{                                                          //最后一位为运算数
             return  lastNum.matches("^[-]?\\d*\\.?\\d*");   //验证最后一位运算数是否合法
@@ -191,6 +194,7 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
                 }
                 break;
             case CANCEL:
+                clearFlag=false;
                 refreshText("");
                 builder.delete(0, builder.length());    //builder清空
                 break;
@@ -216,14 +220,16 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
         // 遍历 ls
         for (String item : list) {
             // 这里使用正则表达式来取出数
-            if (item.matches("\\d+")) { // 匹配的是多位数
+            if (item.matches("(^-?[1-9]\\d*\\.\\d+$|^-?0\\.\\d+$|^-?[1-9]\\d*$|^0$)")) { // 匹配的是多位数
                 // 入栈
                 stack.push(item);
             } else {
                 // pop出两个数，并运算， 再入栈
-                int num2 = Integer.parseInt(stack.pop());
-                int num1 = Integer.parseInt(stack.pop());
-                int res;
+//                int num2 = Integer.parseInt(stack.pop());
+//                int num1 = Integer.parseInt(stack.pop());
+                double num2 = Double.parseDouble(stack.pop());
+                double num1 = Double.parseDouble(stack.pop());
+                double res;
                 switch (item) {
                     case "+":
                         res = num1 + num2;
@@ -231,10 +237,10 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
                     case "-":
                         res = num1 - num2;
                         break;
-                    case "×":
+                    case "*":
                         res = num1 * num2;
                         break;
-                    case "÷":
+                    case "/":
                         res = num1 / num2;
                         break;
                     default:
@@ -245,7 +251,7 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
             }
         }
         // 最后留在stack中的数据是运算结果
-        return String.valueOf(Integer.parseInt(stack.pop())) ;
+        return String.valueOf(Double.parseDouble(stack.pop())) ;
 
     }
     /**
@@ -264,7 +270,8 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
         // 遍历ls
         for (String item : ls) {
             // 如果是一个数，加入s2
-            if (item.matches("\\d+")) {
+//            "\\d+"
+            if (item.matches("(^-?[1-9]\\d*\\.\\d+$|^-?0\\.\\d+$|^-?[1-9]\\d*$|^0$)")) {
                 s2.add(item);
             } // 如果s1为空,则直接将此运算符入栈；
             else if (s1.size() == 0) {
@@ -298,18 +305,29 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
         return s2; // 注意因为是存放到List, 因此按顺序输出就是对应的后缀表达式对应的List
     }
     private void ClickEqualTag(){
+        if(builder.length()<1||clearFlag){
+            return;
+        }
         builder.append("=");
         Log.d("cal",builder.toString());
         ArrayList<String> stack=GetListString(builder.toString());
         stack.remove(stack.size()-1);
         List<String> ss= parseSuffixExpreesionList(stack);
+
         String result= Calculate(ss);
         Log.d("calr",result);
         builder.append(result);
         refreshText(builder.toString());
-        builder.delete(0,builder.length());
+        clearFlag=true;
+//        builder.delete(0,builder.length());
+//        refreshText("");
     }
     private void ClickNumberTag(String inputText){
+        if(clearFlag==true){
+            texCount.setText(builder.toString());
+            clear();
+            clearFlag=false;
+        }
         builder.append(inputText);
         if(verifyExp(builder.toString())){
             refreshText(builder.toString());      //表达式正确刷新
@@ -336,11 +354,11 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
                 R.id.btn_divide,// “除法”按钮
                 R.id.btn_plus
         };
-        if(id==R.id.btn_clear)
+        if(id==R.id.btn_del)
             return ButtonType.CE;
         if(id==R.id.btn_equal)
             return ButtonType.EQUAL;
-        if(id==R.id.btn_cancel)
+        if(id==R.id.btn_clear)
             return ButtonType.CANCEL;
         for (int k : NumberButton) {
             if (k == id)

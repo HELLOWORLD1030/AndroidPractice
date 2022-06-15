@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         EnableButton(R.id.brainTest,lab42.class);
         EnableButton(R.id.listview,ActivityBaselistview.class);
         EnableButton(R.id.datePicker,ActivityDatetimepicker.class);
+        EnableButton(R.id.timePicker,ActivityTimepicker.class);
+        EnableButton(R.id.chat,ActivityChat.class);
     }
     private void EnableButton(int buttonId,Class destClass){
         Button button = findViewById(buttonId);
