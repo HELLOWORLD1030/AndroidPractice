@@ -1,9 +1,11 @@
 package top.zzgpro.androidpractice;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.TextViewCompat;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 
 import android.widget.TextView;
@@ -47,6 +49,11 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.layout_calculate_new);
         tv_result = findViewById(R.id.tv_result);
         texCount=findViewById(R.id.tex_count);
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(tv_result, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(tv_result,10,35,1, TypedValue.COMPLEX_UNIT_SP);
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(texCount, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(texCount,10,35,1, TypedValue.COMPLEX_UNIT_SP);
+
         for(int buttonId:buttonSeq)
             findViewById(buttonId).setOnClickListener(this);
     }
