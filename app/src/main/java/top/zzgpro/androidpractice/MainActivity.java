@@ -24,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         View view = this.getWindow().getDecorView();
         EnableButton(R.id.calculater,ActivityCalculate.class);
+        EnableButton(R.id.scroll,ActivityBallview.class);
+        EnableButton(R.id.musicplayer,MusicPlayer.class);
+        EnableButton(R.id.brainTest,lab42.class);
+        EnableButton(R.id.listview,ActivityBaselistview.class);
+        EnableButton(R.id.datePicker,ActivityDatetimepicker.class);
     }
     private void EnableButton(int buttonId,Class destClass){
         Button button = findViewById(buttonId);

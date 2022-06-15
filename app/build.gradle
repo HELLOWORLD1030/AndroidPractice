@@ -38,4 +38,5 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
     implementation 'com.alibaba:fastjson:2.0.2.graal'
     implementation 'com.github.xuexiangjys:XUI:1.1.9'
+    implementation 'com.github.loperSeven:DateTimePicker:0.5.8'
 }

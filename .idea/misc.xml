@@ -3,8 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/drawable/btn_bg_selector.xml" value="0.111" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_ballview.xml" value="0.11197916666666667" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_baselistview.xml" value="0.1" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_calculate.xml" value="0.23854166666666668" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_datetimepicker.xml" value="0.1" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_lab42.xml" value="0.1" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_main.xml" value="0.253125" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_music_player.xml" value="0.11197916666666667" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/baseadapteritem.xml" value="0.1" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/lab42_item.xml" value="0.1" />
       </map>
     </option>
   </component>

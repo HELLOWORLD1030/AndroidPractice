@@ -16,15 +16,66 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"/>
-<!--        style="@style/RoundButton.Blue" />-->
-    <Button
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue" />
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="start"
         android:id="@+id/scroll"
         android:text="随手指滑动"
         app:layout_constraintTop_toBottomOf="@id/calculater"
         app:layout_constraintLeft_toLeftOf="@id/calculater"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue"
+        android:layout_marginTop="10dp"/>
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:id="@+id/musicplayer"
+        android:text="音乐播放器"
+        app:layout_constraintTop_toBottomOf="@id/scroll"
+        app:layout_constraintLeft_toLeftOf="@id/scroll"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue"
+
+        android:layout_marginTop="10dp"/>
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:id="@+id/brainTest"
+        android:text="脑筋急转弯"
+        app:layout_constraintTop_toBottomOf="@id/musicplayer"
+        app:layout_constraintLeft_toLeftOf="@id/musicplayer"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue"
+
+        android:layout_marginTop="10dp"/>
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:id="@+id/listview"
+        android:text="ListView"
+        app:layout_constraintTop_toBottomOf="@id/brainTest"
+        app:layout_constraintLeft_toLeftOf="@id/brainTest"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue"
+
+        android:layout_marginTop="10dp"/>
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:id="@+id/datePicker"
+        android:text="日期选择器"
+        app:layout_constraintTop_toBottomOf="@id/listview"
+        app:layout_constraintLeft_toLeftOf="@id/listview"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue"
+
         android:layout_marginTop="10dp"/>
 
 
