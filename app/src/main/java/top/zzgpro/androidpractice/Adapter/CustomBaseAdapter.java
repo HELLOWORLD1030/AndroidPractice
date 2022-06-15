@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -58,12 +60,24 @@ public class CustomBaseAdapter extends BaseAdapter {
         }
         ImageView iconImg = (ImageView) itemView.findViewById(R.id.icon_img);
         TextView titleTv = (TextView) itemView.findViewById(R.id.title_tv);
-        TextView infoTv = (TextView) itemView.findViewById(R.id.info_tv);
+//        TextView infoTv = (TextView) itemView.findViewById(R.id.info_tv);
+        Button subcribe=(Button)itemView.findViewById(R.id.subcribe);
         BaseAdapterItem data = getItem(i);
         if(null != data) {
             iconImg.setImageResource(data.getIcon());
             titleTv.setText(data.getTitle());
-            infoTv.setText(data.getInfo());
+            subcribe.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context,"您已订购："+data.getTitle(),Toast.LENGTH_SHORT).show();
+                }
+            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context,"您选择了："+data.getTitle(),Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         return itemView;

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/drawable/btn_bg_selector.xml" value="0.111" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/drawable/round_button.xml" value="0.111" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_ballview.xml" value="0.11197916666666667" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_baselistview.xml" value="0.1" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_calculate.xml" value="0.23854166666666668" />
