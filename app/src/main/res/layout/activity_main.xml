@@ -101,6 +101,18 @@
         style="@style/RoundButton.Blue"
 
         android:layout_marginTop="10dp"/>
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:id="@+id/mall"
+        android:text="砍一刀"
+        app:layout_constraintTop_toBottomOf="@id/chat"
+        app:layout_constraintLeft_toLeftOf="@id/chat"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue"
+
+        android:layout_marginTop="10dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

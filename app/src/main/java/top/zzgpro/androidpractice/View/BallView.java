@@ -31,6 +31,7 @@ public class BallView extends View {
         paint.setColor(Color.RED);
         //画一个圆
         canvas.drawCircle(currentX,currentY,20,paint);
+
     }
 
     @Override

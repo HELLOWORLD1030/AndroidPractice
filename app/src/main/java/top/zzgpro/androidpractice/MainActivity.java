@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         EnableButton(R.id.datePicker,ActivityDatetimepicker.class);
         EnableButton(R.id.timePicker,ActivityTimepicker.class);
         EnableButton(R.id.chat,ActivityChat.class);
+        EnableButton(R.id.mall,ActivityMall.class);
     }
     private void EnableButton(int buttonId,Class destClass){
         Button button = findViewById(buttonId);
