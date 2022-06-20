@@ -19,13 +19,18 @@
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_main.xml" value="0.253125" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_mall.xml" value="0.11197916666666667" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_music_player.xml" value="0.11197916666666667" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_scan.xml" value="0.11197916666666667" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_sensor.xml" value="0.11197916666666667" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_timepicker.xml" value="0.253125" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/activity_tts.xml" value="0.17083333333333334" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/array_item.xml" value="0.1" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/baseadapteritem.xml" value="0.1" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/lab42_item.xml" value="0.1" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/layout_calculate_new.xml" value="0.1" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/layout_msg_receive.xml" value="0.23854166666666668" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/layout_msg_send.xml" value="0.23854166666666668" />
         <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/layout/mall_item.xml" value="0.1" />
+        <entry key="..\:/JavaProject/AndroidPractice/app/src/main/res/menu/encode.xml" value="0.11197916666666667" />
       </map>
     </option>
   </component>

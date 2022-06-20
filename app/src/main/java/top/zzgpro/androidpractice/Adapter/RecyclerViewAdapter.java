@@ -1,6 +1,8 @@
 package top.zzgpro.androidpractice.Adapter;
 
 import android.content.Context;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,20 +11,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.widget.TextViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
+import top.zzgpro.androidpractice.Item.GoodsItem;
 import top.zzgpro.androidpractice.Item.RecyclerItemData;
 import top.zzgpro.androidpractice.R;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    private ArrayList<RecyclerItemData> mDatas = null;
+    private ArrayList<GoodsItem> mDatas = null;
     private LayoutInflater mInflater = null;
-
-    public RecyclerViewAdapter(Context context, ArrayList<RecyclerItemData> datas) {
+    private Context context;
+    public RecyclerViewAdapter(Context context, ArrayList<GoodsItem> datas) {
         this.mDatas = datas;
         this.mInflater = LayoutInflater.from(context);
+        this.context=context;
     }
 
     @NonNull
@@ -35,11 +43,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        RecyclerItemData name = mDatas.get(position);
-        holder.setPicture(name.getImage());
-        holder.setTitle(name.getTitle());
-        holder.setSellCount(name.getSellCount());
+        GoodsItem name = mDatas.get(position);
+        holder.setPicture(name.getPicture());
+        holder.setTitle(name.getName());
+        holder.setSellCount(name.getSellcount());
 
+    }
+    public void refresh(ArrayList<GoodsItem> list){
+        //这个方法是我们自己手写的，主要是对适配器的一个刷新
+        Log.d("networkRecyclerview","adapterdata"+String.valueOf(mDatas.size()));
+//        this.mDatas.addAll(list);
+        notifyDataSetChanged();
+        Log.d("lcj","notifyDataSetChanged");
+        Log.d("networkRecyclerview","adapterdata"+String.valueOf(mDatas.size()));
+    }
+    public void resetData(){
+        this.mDatas.clear();
     }
 
     @Override
@@ -58,18 +77,25 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             this.picture = (ImageView) itemView.findViewById(R.id.goodspicture);
             this.title = (TextView) itemView.findViewById(R.id.title);
             this.sellCount = (TextView) itemView.findViewById(R.id.sellcount);
+            TextViewCompat.setAutoSizeTextTypeWithDefaults(this.title, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+            TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(this.title,10,20,1, TypedValue.COMPLEX_UNIT_SP);
         }
 
         public void setSellCount(String text) {
-            this.sellCount.setText(text);
+            this.sellCount.setText("已获 "+text+" 件");
         }
 
         public void setTitle(String title) {
             this.title.setText(title);
         }
 
-        public void setPicture(int id) {
-            this.picture.setImageResource(id);
+        public void setPicture(String url) {
+            Glide.with(context)
+                    .load(url)
+                    .placeholder(R.drawable.loading)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .error(R.drawable.error)
+                    .into(this.picture);
         }
 
         public void setFreeget(Button freeget) {

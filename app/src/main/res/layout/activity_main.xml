@@ -113,6 +113,42 @@
         style="@style/RoundButton.Blue"
 
         android:layout_marginTop="10dp"/>
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:id="@+id/tts"
+        android:text="TTS(选做题5)"
+        app:layout_constraintTop_toBottomOf="@id/mall"
+        app:layout_constraintLeft_toLeftOf="@id/mall"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue"
+
+        android:layout_marginTop="10dp"/>
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:id="@+id/scancode"
+        android:text="扫描二维码(选做题14)"
+        app:layout_constraintTop_toBottomOf="@id/tts"
+        app:layout_constraintLeft_toLeftOf="@id/tts"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue"
+
+        android:layout_marginTop="10dp"/>
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:id="@+id/sensor"
+        android:text="获取支持传感器"
+        app:layout_constraintTop_toBottomOf="@id/scancode"
+        app:layout_constraintLeft_toLeftOf="@id/scancode"
+        app:layout_constraintVertical_bias="0.2"
+        style="@style/RoundButton.Blue"
+
+        android:layout_marginTop="10dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

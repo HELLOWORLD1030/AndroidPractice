@@ -16,13 +16,20 @@
         android:gravity="center"
         android:layout_marginLeft="10dp"
         android:background="@drawable/roundtextview"/>
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/mainrefresh"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onecut"
         android:layout_marginTop="50dp"
 
-        android:layout_marginLeft="30dp"
-        android:id="@+id/malllist"/>
+        android:layout_marginLeft="30dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:id="@+id/malllist"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
