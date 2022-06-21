@@ -1,6 +1,8 @@
 package top.zzgpro.androidpractice.Adapter;
 
 import android.graphics.Rect;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
@@ -10,7 +12,7 @@ import java.util.HashMap;
 
 public class RecyclerDecoration extends RecyclerView.ItemDecoration {
 
-    private HashMap<String, Integer> mSpaceValueMap;
+    private final HashMap<String, Integer> mSpaceValueMap;
 
     public static final String TOP_DECORATION = "top_decoration";
     public static final String BOTTOM_DECORATION = "bottom_decoration";
@@ -22,8 +24,8 @@ public class RecyclerDecoration extends RecyclerView.ItemDecoration {
     }
 
     @Override
-    public void getItemOffsets(Rect outRect, View view,
-                               RecyclerView parent, RecyclerView.State state) {
+    public void getItemOffsets(@NonNull Rect outRect, @NonNull View view,
+                               @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         if (mSpaceValueMap.get(TOP_DECORATION) != null)
             outRect.top = mSpaceValueMap.get(TOP_DECORATION);
         if (mSpaceValueMap.get(LEFT_DECORATION) != null)

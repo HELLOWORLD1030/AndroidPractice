@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -56,7 +56,7 @@ public class ActivityChat extends Activity implements View.OnClickListener{
         msgBean bean3 = new msgBean();
         bean3.setType(0);
         bean3.setIcon(BitmapFactory.decodeResource(getResources(), R.drawable.send));
-        bean3.setText("很高兴为你服务，这里是listview测试页面");
+        bean3.setText("很高兴为你服务");
 
         msgBean bean4 = new msgBean();
         bean4.setType(1);
@@ -74,7 +74,6 @@ public class ActivityChat extends Activity implements View.OnClickListener{
         data.add(bean4);
         data.add(bean5);
     }
-
     @Override
     public void onClick(View v) {
         editText =(EditText) findViewById(R.id.input_text);

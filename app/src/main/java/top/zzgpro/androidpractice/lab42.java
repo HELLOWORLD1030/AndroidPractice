@@ -18,7 +18,6 @@ public class lab42 extends AppCompatActivity {
         setContentView(R.layout.activity_lab42);
         RecyclerView recyclerView=(RecyclerView) findViewById(R.id.ReclyclerViewTest1);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-//        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
         Lab42Adapter recyclerViewAdapter=new Lab42Adapter(this,initDatas(),initAnswers());
@@ -26,6 +25,11 @@ public class lab42 extends AppCompatActivity {
         recyclerView.setAdapter(recyclerViewAdapter);
 
     }
+
+    /**
+     * 初始化 问题数组
+     * @return 包含问题的ArrayList
+     */
     private ArrayList<String> initDatas(){
         ArrayList<String> list=new ArrayList<>();
         list.add("什么门永远关不上");
@@ -35,8 +39,12 @@ public class lab42 extends AppCompatActivity {
         list.add("什么鼠最爱干净?");
         list.add("偷什么不犯法？");
         return list;
-//                ",  "","",  ？",""};
     }
+
+    /**
+     * 初始化答案数组
+     * @return 包含答案的字符串数组
+     */
     private String[] initAnswers(){
         String[] list={ "球门", "亏",  "傻瓜","瀑布",  " 环保署","偷笑" };
         return list;

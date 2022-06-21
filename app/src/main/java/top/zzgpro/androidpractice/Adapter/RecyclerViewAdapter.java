@@ -20,13 +20,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.ArrayList;
 
 import top.zzgpro.androidpractice.Item.GoodsItem;
-import top.zzgpro.androidpractice.Item.RecyclerItemData;
 import top.zzgpro.androidpractice.R;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    private ArrayList<GoodsItem> mDatas = null;
-    private LayoutInflater mInflater = null;
-    private Context context;
+    private final ArrayList<GoodsItem> mDatas;
+    private final LayoutInflater mInflater;
+    private final Context context;
     public RecyclerViewAdapter(Context context, ArrayList<GoodsItem> datas) {
         this.mDatas = datas;
         this.mInflater = LayoutInflater.from(context);
@@ -37,8 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = this.mInflater.inflate(R.layout.mall_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
 
@@ -49,13 +47,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.setSellCount(name.getSellcount());
 
     }
-    public void refresh(ArrayList<GoodsItem> list){
+    public void refresh(){
         //这个方法是我们自己手写的，主要是对适配器的一个刷新
-        Log.d("networkRecyclerview","adapterdata"+String.valueOf(mDatas.size()));
+        Log.d("networkRecyclerview","adapterdata"+ mDatas.size());
 //        this.mDatas.addAll(list);
         notifyDataSetChanged();
         Log.d("lcj","notifyDataSetChanged");
-        Log.d("networkRecyclerview","adapterdata"+String.valueOf(mDatas.size()));
+        Log.d("networkRecyclerview","adapterdata"+ mDatas.size());
     }
     public void resetData(){
         this.mDatas.clear();
@@ -67,16 +65,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView sellCount;
-        private TextView title;
-        private ImageView picture;
+        private final TextView sellCount;
+        private final TextView title;
+        private final ImageView picture;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.freeget = (Button) itemView.findViewById(R.id.freeget);
-            this.picture = (ImageView) itemView.findViewById(R.id.goodspicture);
-            this.title = (TextView) itemView.findViewById(R.id.title);
-            this.sellCount = (TextView) itemView.findViewById(R.id.sellcount);
+            this.freeget = itemView.findViewById(R.id.freeget);
+            this.picture = itemView.findViewById(R.id.goodspicture);
+            this.title = itemView.findViewById(R.id.title);
+            this.sellCount = itemView.findViewById(R.id.sellcount);
             TextViewCompat.setAutoSizeTextTypeWithDefaults(this.title, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
             TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(this.title,10,20,1, TypedValue.COMPLEX_UNIT_SP);
         }

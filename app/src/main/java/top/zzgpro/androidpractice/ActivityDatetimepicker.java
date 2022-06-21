@@ -15,20 +15,18 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
 public class ActivityDatetimepicker extends AppCompatActivity {
-    private DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datetimepicker);
         DateTimePicker dateTimePicker=(DateTimePicker) findViewById(R.id.picker);
-//        dateTimePicker.setOnDateTimeChangedListener((mill)->{
-//            Log.d("datetimepick",String.valueOf(mill));
-//        });
+        //设置展示类型
         dateTimePicker.setDisplayType(new int[]{
                 DateTimeConfig.YEAR,
                 DateTimeConfig.MONTH,
                 DateTimeConfig.DAY
         });
+        //设置默认展示时间为当前时间
         dateTimePicker.setDefaultMillisecond(LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli());//defaultMillisecond 为毫秒时间戳
         dateTimePicker.setOnDateTimeChangedListener((mill)->{
             Log.d("mill",String.valueOf(mill));
@@ -36,6 +34,11 @@ public class ActivityDatetimepicker extends AppCompatActivity {
             return null;
         });
     }
+
+    /**
+     * 更改当前显示的时间
+     * @param mill
+     */
     private void ChangeSelectShow(Long mill){
         Instant instant=Instant.ofEpochMilli(mill);
         LocalDateTime dateTime=LocalDateTime.ofInstant(instant,ZoneOffset.of("+8"));

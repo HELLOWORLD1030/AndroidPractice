@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,7 +19,6 @@ import com.google.zxing.Result;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
-import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.qrcode.QRCodeReader;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.*;
@@ -32,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ActivityScan extends AppCompatActivity {
-    private String TestStr="https://blog.zzgpro.top";
+    private final String TestStr="https://blog.zzgpro.top";
     private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,35 +41,35 @@ public class ActivityScan extends AppCompatActivity {
         ImageView imageView=findViewById(R.id.testimage);
          textView=findViewById(R.id.showdecode);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bitmap bitmap;
-                try {
-                  bitmap= bitMatrixToBitmap(encode(TestStr)) ;
-                  imageView.setImageBitmap(bitmap);
+        button.setOnClickListener(view -> {
+            Bitmap bitmap;
+            try {
+              bitmap= bitMatrixToBitmap(encode(TestStr)) ;
+              imageView.setImageBitmap(bitmap);
 //                    Optional ;、
-                  textView.setText(Optional.of(decode(bitmap)).orElse("kong"));
-                } catch (WriterException e) {
-                    e.printStackTrace();
-                }
+              textView.setText(Optional.of(decode(bitmap)).orElse("kong"));
+            } catch (WriterException e) {
+                e.printStackTrace();
+            }
 
-            }
         });
-        scan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ScanOptions options = new ScanOptions();
-                options.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
-                options.setPrompt("Scan a barcode");
-                options.setCameraId(0);  // Use a specific camera of the device
-                options.setBeepEnabled(false);
-                options.setBarcodeImageEnabled(true);
-                options.setOrientationLocked(false);
-                barcodeLauncher.launch(options);
-            }
+        scan.setOnClickListener(view -> {
+            ScanOptions options = new ScanOptions();
+            options.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
+            options.setPrompt("Scan a barcode");
+            options.setCameraId(0);  // Use a specific camera of the device
+            options.setBeepEnabled(false);
+            options.setBarcodeImageEnabled(true);
+            options.setOrientationLocked(false);
+            barcodeLauncher.launch(options);
         });
     }
+
+    /**
+     * 转换BitMatrix到Bitmap
+     * @param bitMatrix
+     * @return
+     */
     private Bitmap bitMatrixToBitmap(BitMatrix bitMatrix) {
         final int width = bitMatrix.getWidth();
         final int height = bitMatrix.getHeight();
@@ -87,6 +85,13 @@ public class ActivityScan extends AppCompatActivity {
 
         return bitmap;
     }
+
+    /**
+     * 生成二维码
+     * @param contents 二维码的内容
+     * @return BitMatrix 内容矩阵
+     * @throws WriterException 抛出异常
+     */
     private BitMatrix encode(String contents) throws WriterException {
         final Map<EncodeHintType, Object> hints = new HashMap<>();
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);

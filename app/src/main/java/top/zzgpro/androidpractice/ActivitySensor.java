@@ -18,10 +18,7 @@ public class ActivitySensor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensor);
-        ListView listView=(ListView) findViewById(R.id.sensorlist);
-//        listView.setAdapter(new ArrayAdapter<String>(this,
-//                android.R.layout., strs));
-
+        ListView listView= findViewById(R.id.sensorlist);
         //获取系统传感器管理器
         SensorManager sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //通过系统传感器管理器..获取本机所有传感器.
