@@ -17,15 +17,16 @@ public class MainActivity extends AppCompatActivity {
         EnableButton(R.id.calculater,ActivityCalculate.class);
         EnableButton(R.id.scroll,ActivityBallview.class);
         EnableButton(R.id.musicplayer,MusicPlayer.class);
-        EnableButton(R.id.brainTest,lab42.class);
+        EnableButton(R.id.brainTest, ActivityBrainTest.class);
         EnableButton(R.id.listview,ActivityBaselistview.class);
         EnableButton(R.id.datePicker,ActivityDatetimepicker.class);
         EnableButton(R.id.timePicker,ActivityTimepicker.class);
         EnableButton(R.id.chat,ActivityChat.class);
         EnableButton(R.id.mall,ActivityMall.class);
-        EnableButton(R.id.tts,ActivityTTS.class);
+//        EnableButton(R.id.tts,ActivityTTS.class);
         EnableButton(R.id.scancode,ActivityScan.class);
         EnableButton(R.id.sensor,ActivitySensor.class);
+        EnableButton(R.id.accelerate,ActivityAccelerate.class);
     }
 
     /**

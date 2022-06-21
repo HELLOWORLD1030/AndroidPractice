@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lab42">
+    tools:context=".ActivityBrainTest">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ReclyclerViewTest1"
         android:layout_width="wrap_content"

@@ -1,13 +1,12 @@
 package top.zzgpro.androidpractice;
 
-import androidx.annotation.RequiresApi;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -19,7 +18,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import static java.lang.Integer.parseInt;
-
 public class MusicPlayer extends AppCompatActivity implements View.OnClickListener{
     //进度条
     private static SeekBar sb;
@@ -36,7 +34,6 @@ public class MusicPlayer extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
-//        intent1=getIntent();
         init();
     }
     private void init(){
@@ -61,8 +58,6 @@ public class MusicPlayer extends AppCompatActivity implements View.OnClickListen
         bindService(intent2,conn,BIND_AUTO_CREATE);//绑定服务
         //为滑动条添加事件监听，每个控件不同果然点击事件方法名都不同
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            //这一行注解是保证API在KITKAT以上的模拟器才能顺利运行，也就是19以上
-
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //进当滑动条到末端时，结束动画
@@ -70,7 +65,6 @@ public class MusicPlayer extends AppCompatActivity implements View.OnClickListen
                     animator.pause();//停止播放动画
                 }
             }
-
             @Override
             //滑动条开始滑动时调用
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -146,7 +140,6 @@ public class MusicPlayer extends AppCompatActivity implements View.OnClickListen
         }
         @Override
         public void onServiceDisconnected(ComponentName name){
-
         }
     }
     //判断服务是否被解绑
@@ -157,7 +150,6 @@ public class MusicPlayer extends AppCompatActivity implements View.OnClickListen
             unbindService(conn);//解绑服务
         }
     }
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onClick(View v) {
         switch (v.getId()){

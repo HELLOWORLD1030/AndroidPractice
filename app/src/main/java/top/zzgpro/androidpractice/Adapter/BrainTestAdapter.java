@@ -12,44 +12,35 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import top.zzgpro.androidpractice.Item.BrainTestItem;
 import top.zzgpro.androidpractice.R;
 
-public class Lab42Adapter extends RecyclerView.Adapter<Lab42Adapter.ViewHolder> {
-    private ArrayList<String> mDatas = null;
-    private LayoutInflater mInflater = null;
-    private String[] Answer=null;
-    private Context context;
-    public Lab42Adapter(Context context, ArrayList<String> data, String[] answer){
+public class BrainTestAdapter extends RecyclerView.Adapter<BrainTestAdapter.ViewHolder> {
+    private final ArrayList<BrainTestItem> mDatas;
+    private final LayoutInflater mInflater;
+    private final Context context;
+    public BrainTestAdapter(Context context, ArrayList<BrainTestItem> data){
         mInflater=LayoutInflater.from(context);
         mDatas=data;
-        this.Answer=answer;
         this.context=context;
     }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view=this.mInflater.inflate(R.layout.lab42_item,parent,false);
-        ViewHolder viewHolder=new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.setText(mDatas.get(position));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context,Answer[holder.getAdapterPosition()],Toast.LENGTH_SHORT).show();
-            }
-        });
+        holder.setText(mDatas.get(position).getQuestion());
+        holder.itemView.setOnClickListener(view -> Toast.makeText(context,mDatas.get(holder.getAdapterPosition()).getAnswer() ,Toast.LENGTH_SHORT).show());
     }
-
     @Override
     public int getItemCount() {
         return mDatas == null ? 0 : mDatas.size();
     }
     class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView text;
+        private final TextView text;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             text=(TextView) itemView.findViewById(R.id.brainTest);

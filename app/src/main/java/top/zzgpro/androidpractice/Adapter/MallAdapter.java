@@ -22,11 +22,11 @@ import java.util.ArrayList;
 import top.zzgpro.androidpractice.Item.GoodsItem;
 import top.zzgpro.androidpractice.R;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class MallAdapter extends RecyclerView.Adapter<MallAdapter.ViewHolder> {
     private final ArrayList<GoodsItem> mDatas;
     private final LayoutInflater mInflater;
     private final Context context;
-    public RecyclerViewAdapter(Context context, ArrayList<GoodsItem> datas) {
+    public MallAdapter(Context context, ArrayList<GoodsItem> datas) {
         this.mDatas = datas;
         this.mInflater = LayoutInflater.from(context);
         this.context=context;
@@ -49,11 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
     public void refresh(){
         //这个方法是我们自己手写的，主要是对适配器的一个刷新
-        Log.d("networkRecyclerview","adapterdata"+ mDatas.size());
-//        this.mDatas.addAll(list);
         notifyDataSetChanged();
-        Log.d("lcj","notifyDataSetChanged");
-        Log.d("networkRecyclerview","adapterdata"+ mDatas.size());
     }
     public void resetData(){
         this.mDatas.clear();
@@ -78,7 +74,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             TextViewCompat.setAutoSizeTextTypeWithDefaults(this.title, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
             TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(this.title,10,20,1, TypedValue.COMPLEX_UNIT_SP);
         }
-
         public void setSellCount(String text) {
             this.sellCount.setText("已获 "+text+" 件");
         }
@@ -86,7 +81,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void setTitle(String title) {
             this.title.setText(title);
         }
-
         public void setPicture(String url) {
             Glide.with(context)
                     .load(url)
@@ -95,11 +89,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     .error(R.drawable.error)
                     .into(this.picture);
         }
-
         public void setFreeget(Button freeget) {
             this.freeget = freeget;
         }
-
         private Button freeget;
     }
 }

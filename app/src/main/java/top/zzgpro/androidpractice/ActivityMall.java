@@ -27,19 +27,17 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import top.zzgpro.androidpractice.Adapter.RecyclerDecoration;
-import top.zzgpro.androidpractice.Adapter.RecyclerViewAdapter;
+import top.zzgpro.androidpractice.Adapter.MallAdapter;
 import top.zzgpro.androidpractice.Item.GoodsItem;
 
 public class ActivityMall extends AppCompatActivity {
     private final String BaseURL="https://web.zzgpro.top/";
-    private RecyclerViewAdapter recyclerViewAdapter;
+    private MallAdapter mallAdapter;
     private final ArrayList<GoodsItem> mDatas = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mall);
-
         RecyclerView recyclerView= findViewById(R.id.malllist);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -47,9 +45,9 @@ public class ActivityMall extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(gridLayoutManager);
         Log.d("networkRecyclerview",String.valueOf( mDatas.size()));
-        recyclerViewAdapter=new RecyclerViewAdapter(this,mDatas);
+        mallAdapter =new MallAdapter(this,mDatas);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setAdapter(mallAdapter);
         HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
         stringIntegerHashMap.put(RecyclerDecoration.BOTTOM_DECORATION,70);//右间距
         stringIntegerHashMap.put(RecyclerDecoration.RIGHT_DECORATION,150);
@@ -72,7 +70,7 @@ public class ActivityMall extends AppCompatActivity {
          */
         SwipeRefreshLayout swipeRefreshLayout=findViewById(R.id.mainrefresh);
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            recyclerViewAdapter.resetData();
+            mallAdapter.resetData();
             initDatas();
             swipeRefreshLayout.setRefreshing(false);
         });
@@ -82,7 +80,7 @@ public class ActivityMall extends AppCompatActivity {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            recyclerViewAdapter.refresh();
+            mallAdapter.refresh();
         }
     };
 

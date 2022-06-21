@@ -52,34 +52,22 @@ public class CustomBaseAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View itemView=null;
+        View itemView;
         if(view==null){
             itemView=inflater.inflate(this.ResId,null);
         }else{
             itemView=view;
         }
-        ImageView iconImg = (ImageView) itemView.findViewById(R.id.icon_img);
-        TextView titleTv = (TextView) itemView.findViewById(R.id.title_tv);
-//        TextView infoTv = (TextView) itemView.findViewById(R.id.info_tv);
+        ImageView iconImg = itemView.findViewById(R.id.icon_img);
+        TextView titleTv = itemView.findViewById(R.id.title_tv);
         Button subcribe=(Button)itemView.findViewById(R.id.subcribe);
         BaseAdapterItem data = getItem(i);
         if(null != data) {
             iconImg.setImageResource(data.getIcon());
             titleTv.setText(data.getTitle());
-            subcribe.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(context,"您已订购："+data.getTitle(),Toast.LENGTH_SHORT).show();
-                }
-            });
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(context,"您选择了："+data.getTitle(),Toast.LENGTH_SHORT).show();
-                }
-            });
+            subcribe.setOnClickListener(view12 -> Toast.makeText(context,"您已订购："+data.getTitle(),Toast.LENGTH_SHORT).show());
+            itemView.setOnClickListener(view1-> Toast.makeText(context,"您选择了："+data.getTitle(),Toast.LENGTH_SHORT).show());
         }
-
         return itemView;
     }
 }

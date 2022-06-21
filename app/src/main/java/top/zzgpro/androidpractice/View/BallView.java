@@ -28,7 +28,7 @@ public class BallView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //设置画笔的颜色
-        paint.setColor(Color.RED);
+        paint.setColor(Color.BLUE);
         //画一个圆
         canvas.drawCircle(currentX,currentY,20,paint);
 

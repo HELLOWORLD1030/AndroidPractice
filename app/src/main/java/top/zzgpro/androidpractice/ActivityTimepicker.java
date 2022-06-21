@@ -20,9 +20,6 @@ public class ActivityTimepicker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timepicker);
         DateTimePicker dateTimePicker=(DateTimePicker) findViewById(R.id.picker);
-//        dateTimePicker.setOnDateTimeChangedListener((mill)->{
-//            Log.d("datetimepick",String.valueOf(mill));
-//        });
         dateTimePicker.setDisplayType(new int[]{
                 DateTimeConfig.HOUR,
                 DateTimeConfig.MIN,
