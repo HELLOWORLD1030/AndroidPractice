@@ -17,13 +17,6 @@ dependencyResolutionManagement {
 rootProject.name = "AndroidPractice"
 include ':app'
 
-include ':android'
-include ':android'
 
-include ':androidzxing'
-include ':android1'
-include ':android2'
 include ':android'
 include ':android'
-include ':android'
-include ':android1'

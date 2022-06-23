@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +32,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ActivityScan extends AppCompatActivity {
-    private final String TestStr="https://blog.zzgpro.top";
+//    private final String TestStr="https://blog.zzgpro.top";
     private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,23 +42,26 @@ public class ActivityScan extends AppCompatActivity {
         Button scan=findViewById(R.id.scan1);
         ImageView imageView=findViewById(R.id.testimage);
          textView=findViewById(R.id.showdecode);
-
+        EditText editText=findViewById(R.id.inputqrtext);
         button.setOnClickListener(view -> {
             Bitmap bitmap;
             try {
-              bitmap= bitMatrixToBitmap(encode(TestStr)) ;
+                if("".equals(editText.getText().toString())){
+                    Toast.makeText(this,"请输入要生成二维码的内容",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+              bitmap= bitMatrixToBitmap(encode(editText.getText().toString())) ;
               imageView.setImageBitmap(bitmap);
-//                    Optional ;、
-              textView.setText(Optional.of(decode(bitmap)).orElse("kong"));
+              textView.setText(Optional.of(decode(bitmap)).orElse("二维码扫描出现问题"));
             } catch (WriterException e) {
-                e.printStackTrace();
+                Log.e("SCANQR",e.getMessage());
+//                e.printStackTrace();
             }
-
         });
         scan.setOnClickListener(view -> {
             ScanOptions options = new ScanOptions();
             options.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
-            options.setPrompt("Scan a barcode");
+            options.setPrompt("Scan QRCode");
             options.setCameraId(0);  // Use a specific camera of the device
             options.setBeepEnabled(false);
             options.setBarcodeImageEnabled(true);
@@ -119,6 +124,7 @@ public class ActivityScan extends AppCompatActivity {
             return null;
         }
     }
+
     private final ActivityResultLauncher<ScanOptions> barcodeLauncher = registerForActivityResult(new ScanContract(),
             result -> {
                 if(result.getContents() == null) {

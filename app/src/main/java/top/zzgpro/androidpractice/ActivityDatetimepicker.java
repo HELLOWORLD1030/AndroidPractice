@@ -1,10 +1,10 @@
 package top.zzgpro.androidpractice;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.loper7.date_time_picker.DateTimeConfig;
 import com.loper7.date_time_picker.DateTimePicker;
@@ -12,14 +12,13 @@ import com.loper7.date_time_picker.DateTimePicker;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 
 public class ActivityDatetimepicker extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datetimepicker);
-        DateTimePicker dateTimePicker=(DateTimePicker) findViewById(R.id.picker);
+        DateTimePicker dateTimePicker= findViewById(R.id.picker);
         //设置展示类型
         dateTimePicker.setDisplayType(new int[]{
                 DateTimeConfig.YEAR,
@@ -45,7 +44,7 @@ public class ActivityDatetimepicker extends AppCompatActivity {
         String Year=String.valueOf( dateTime.getYear());
         String Month=String.valueOf( dateTime.getMonth().getValue());
         String Day=String.valueOf( dateTime.getDayOfMonth());
-        EditText editText=(EditText) findViewById(R.id.selectdate);
+        EditText editText= findViewById(R.id.selectdate);
         String tip=Year+"年"+Month+"月"+Day+"日";
         editText.setText(tip);
 

@@ -34,6 +34,4 @@ public class msgBean {
         this.icon = icon;
     }
 
-    //构造函数
-//    public ChatItemListViewBean(){    }
 }

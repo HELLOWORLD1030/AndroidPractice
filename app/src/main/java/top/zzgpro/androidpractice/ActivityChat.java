@@ -7,7 +7,6 @@ import android.view.View;
 
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -19,25 +18,18 @@ import top.zzgpro.androidpractice.Bean.msgBean;
 public class ActivityChat extends Activity implements View.OnClickListener{
 
     private ListView mListView;
-    private EditText editText;
-    private Button button;
 
     //建立一个msgBean类型的动态列表  data对象
-    List<msgBean> data = new ArrayList<msgBean>();
-    msgAdapter adapter= new msgAdapter();
+    List<msgBean> data = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        mListView = (ListView) findViewById(R.id.list_view);
-        initMsg();//消息初始化   以后可以优化，即把它去掉 如果有后台数据库，可以保存起来  不过这方面我还研究
-        //不然每次打开软件，都对消息进行初始化  那先前的消息都没了  可以自己深挖一下
-        //监听按钮
-        button =(Button) findViewById(R.id.send1);
+        mListView =findViewById(R.id.list_view);
+        initMsg();
+        Button button = findViewById(R.id.send1);
         button.setOnClickListener(this);
         mListView.setAdapter(new msgAdapter(this, data));
     }
@@ -52,12 +44,10 @@ public class ActivityChat extends Activity implements View.OnClickListener{
         bean2.setType(1);//右
         bean2.setIcon(BitmapFactory.decodeResource(getResources(), R.drawable.send));
         bean2.setText("你好");
-
         msgBean bean3 = new msgBean();
         bean3.setType(0);
         bean3.setIcon(BitmapFactory.decodeResource(getResources(), R.drawable.send));
         bean3.setText("很高兴为你服务");
-
         msgBean bean4 = new msgBean();
         bean4.setType(1);
         bean4.setIcon(BitmapFactory.decodeResource(getResources(), R.drawable.send));
@@ -76,30 +66,21 @@ public class ActivityChat extends Activity implements View.OnClickListener{
     }
     @Override
     public void onClick(View v) {
-        editText =(EditText) findViewById(R.id.input_text);
-        //定义一个String类型的  input变量  返回input_text里的内容
+        EditText editText = findViewById(R.id.input_text);
         String input = editText.getText().toString();
         if(input.equals("")){
             Toast.makeText(ActivityChat.this,"发送内容不能为空",Toast.LENGTH_SHORT).show();
+            return;
         }
-        else {
-            //定义一个msgBean类型的对象  发送消息的实例
             msgBean bean = new msgBean();
             bean.setType(1);
             bean.setIcon(BitmapFactory.decodeResource(getResources(), R.drawable.send));
             bean.setText(input);
-
             data.add(bean);
-            //setListViewHeightBasedOnChildren(mListView);//动态显示高度
-
             mListView.setAdapter(new msgAdapter(this, data));
-
-            //精华部分  卡了两天   当然还有其他实现方式  可能用recycleview来实现聊天页面不大适用
-            /* 调用ListView的setSelection()方法将显示的数据定位到最后一行*/
             mListView.setSelection(data.size());
-
             //清空输入框文本
             editText.setText("");
-        }
+
     }
 }

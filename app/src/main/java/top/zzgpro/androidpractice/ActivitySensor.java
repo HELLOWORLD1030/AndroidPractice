@@ -23,7 +23,7 @@ public class ActivitySensor extends AppCompatActivity {
         SensorManager sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //通过系统传感器管理器..获取本机所有传感器.
         List<Sensor> sensorList = sm.getSensorList(Sensor.TYPE_ALL);
-        listView.setAdapter(new ArrayAdapter<Sensor>(this,R.layout.array_item,sensorList));
+        listView.setAdapter(new ArrayAdapter<>(this,R.layout.array_item,sensorList));
         for(Sensor s :sensorList){
             Log.i("sensorList",s.toString());
         }
