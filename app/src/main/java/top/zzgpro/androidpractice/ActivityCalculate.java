@@ -63,8 +63,6 @@ public class ActivityCalculate extends AppCompatActivity implements View.OnClick
     }
 
 
-    //检查整个表达式
-
     // 刷新文本显示
     private void refreshText(String text) {
         showText = text;
